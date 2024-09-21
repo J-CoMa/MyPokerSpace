@@ -1,0 +1,103 @@
+:root {
+  --table-height: 70vh;
+  --cardholder-height: calc(var(--table-height) * 0.5);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(31, 31, 31);
+}
+
+ul {
+  list-style: none;
+}
+
+.table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background-color: green;
+  height: var(--table-height);
+  width: calc(var(--table-height) * 1.6);
+  border-radius: 0px 0px 2000px 2000px;
+  box-shadow: 0px 0px 40px;
+}
+
+.table-inner {
+  position: absolute;
+  height: calc(var(--table-height) * 0.8);
+  width: calc(var(--table-height) * 0.85 * 1.6);
+  border-radius: 0px 0px 2000px 2000px;
+  border: 8px solid rgba(255, 255, 255, 0.2);
+}
+
+.cardholder {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.2);
+  height: var(--cardholder-height);
+  width: calc(var(--table-height) * 0.8);
+  top: calc(var(--table-height) * -0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.player {
+  top: calc(var(--table-height) - (var(--table-height) * 0.4));
+}
+
+ul {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card > img {
+  height: calc(var(--cardholder-height) * 0.9);
+  filter: drop-shadow(0 0 2px);
+  transform: translateX(calc(-50% - 2.5vh));
+}
+
+.card {
+  width: 0;
+  padding-left: 5vh;
+}
+
+@media (max-aspect-ratio: 1.2/1) {
+  .table {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    background-color: green;
+    height: 100vh;
+    width: 100vw;
+    border-radius: 0px;
+    box-shadow: none;
+  }
+
+  .table-inner {
+    width: 90%;
+    height: 60%;
+    margin: 20px;
+    border-radius: 0px;
+  }
+
+  .cardholder {
+    position: relative;
+    left: 0;
+    top: 0;
+  }
+}
