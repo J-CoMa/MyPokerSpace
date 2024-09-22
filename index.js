@@ -31,7 +31,6 @@ connection.connect((err) => {
 
 connection.query('SELECT * FROM user', (err, results, fields) => {
   if (err) throw err;
-  console.log(results);
 });
 
 app.get("/", (req, res) => {
