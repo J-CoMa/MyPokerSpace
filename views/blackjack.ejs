@@ -13,9 +13,8 @@
     <div class="table-inner"></div>
 
     <div class="cardholder house">
-      <ul id="house-cards">
-        <li class="card"><img src="images/decks/StylizedDeck/PNG/white/Clovers_Jack_white.png" alt=""></li>
-        <li class="card"><img src="images/decks/StylizedDeck/PNG/white/Clovers_Jack_white.png" alt=""></li>
+      <ul id="dealer-cards">
+
       </ul>
     </div>
 
@@ -28,11 +27,32 @@
 
     <div class="cardholder player">
       <ul id="player-cards">
-        <li class="card"><img src="images/decks/StylizedDeck/PNG/white/Clovers_Jack_white.png" alt=""></li>
-        <li class="card"><img src="images/decks/StylizedDeck/PNG/white/Clovers_Jack_white.png" alt=""></li>
-        <li class="card"><img src="images/decks/StylizedDeck/PNG/white/Clovers_Jack_white.png" alt=""></li>
-        <li class="card"><img src="images/decks/StylizedDeck/PNG/white/Clovers_Jack_white.png" alt=""></li>
+
       </ul>
+    </div>
+  </div>
+
+  <div class="game-info">
+    <div id="dealer-score" class="score">
+      <p>
+        Dealer Score
+      </p>
+      <p>
+        <%if(locals.dealerScore){%>
+          <%=dealerScore%>
+        <%}%>
+      </p>
+    </div>
+
+    <div id="player-score" class="score">
+      <p>
+        Player Score
+      </p>
+      <p>
+        <%if(locals.playerScore){%>
+          <%=playerScore%>
+        <%}%>
+      </p>
     </div>
   </div>
 

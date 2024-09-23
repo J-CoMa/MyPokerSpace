@@ -42,7 +42,7 @@ app.get("/blackjack", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server running on https://localhost:${port}`);
+  console.log(`Server running on http://localhost:${port}`);
 });
 
 connection.end();
