@@ -8,11 +8,14 @@ let playerHand = [];
 let dealerScore = 0;
 let playerScore = 0;
 
-// UI variables
-const dealerHandUI = document.getElementById("house-cards");
-const playerHandUI = document.getElementById("player-cards");
+let gameStarted = false;
 
+// UI variables
 let cardDeckSource = "images/decks/StylizedDeck/white/";
+
+// Player balance
+let playerBalance = 100;
+let currentBet = 0;
 
 function createDeck() {
   deck = [];
@@ -30,13 +33,19 @@ function shuffleDeck() {
   }
 }
 
-function startGame() {
+function startGame(bet) {
+  gameStarted = true;
+  currentBet = bet;
+  playerBalance -= currentBet;
+
   createDeck();
   shuffleDeck();
   playerHand = [drawCard("player"), drawCard("player")];
   dealerHand = [drawCard("dealer"), drawCard("dealer")];
   playerScore = calculateScore(playerHand);
   dealerScore = calculateScore(dealerHand);
+
+  checkGameOver();
 }
 
 function drawCard(hand) {
@@ -85,20 +94,51 @@ function dealerTurn() {
 function checkGameOver() {
   if (playerScore > 21) {
     // Player bust
+    settleBet("lose");
   } else if (dealerScore > 21) {
     // Dealer bust
-  } else if (playerScore === 21) {
+    settleBet("win");
+  } else if (playerScore === 21 && playerHand.length === 2) {
     // Blackjack player
+    settleBet("blackjack");
   }
 }
 
 function checkWinner() {
   if (dealerScore > 21 || playerScore > dealerScore) {
     // Player win
+    settleBet("win");
   } else if (playerScore < dealerScore) {
     // Dealer win
+    settleBet("lose");
   } else {
     // Tie
+    settleBet("tie");
+  }
+}
+
+function settleBet(outcome) {
+  if (outcome === "win") {
+    // Win balance
+    playerBalance += currentBet * 2;
+  } else if (outcome === "blackjack") {
+    // Blackjack balance
+    playerBalance -= currentBet * 2.5;
+  } else if (outcome === "lose") {
+    // Lose balance
+  } else if (outcome === "tie") {
+    // Tie balance
+    playerBalance += currentBet;
+  }
+  currentBet = 0;
+  checkBalance();
+}
+
+function checkBalance() {
+  if (playerBalance <= 0) {
+    // No more balance
+  } else {
+    // Replay
   }
 }
 
