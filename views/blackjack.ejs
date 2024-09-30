@@ -11,55 +11,54 @@
 <body>
   <div class="table">
     <div class="table-inner"></div>
-    <% if(locals.gameStarted) { %>
+    <% if (locals.hasStarted === true) { %>
+      <% if (locals.hasStarted === true && locals.bet) %>
       <div class="cardholder house">
-        <ul id="dealer-cards">
+          <ul id="dealer-cards">
 
-        </ul>
-      </div>
-
-      <div class="buttons-center">
-        <button class="game-btn hit">Hit</button>
-        <img src="" alt="">
-        €100
-        <button class="game-btn stand">Stand</button>
-      </div>
-
-      <div class="cardholder player">
-        <ul id="player-cards">
-
-        </ul>
-      </div>
-
-      <div class="game-info">
-        <div id="dealer-score" class="score">
-          <p>
-            Dealer Score
-          </p>
-          <p>
-            <%if(locals.dealerScore){%>
-            <%=dealerScore%>
-            <%}%>
-          </p>
+          </ul>
         </div>
 
-        <div id="player-score" class="score">
-          <p>
-            Player Score
-          </p>
-          <p>
-            <%if(locals.playerScore){%>
-            <%=playerScore%>
-            <%}%>
-          </p>
+        <div class="buttons-center">
+          <button class="game-btn hit">Hit</button>
+          <img src="" alt="">
+          <%=  %>
+          <button class="game-btn stand">Stand</button>
         </div>
-      </div>
+
+        <div class="cardholder player">
+          <ul id="player-cards">
+
+          </ul>
+        </div>
+
+        <div class="game-info">
+          <div id="dealer-score" class="score">
+            <p>
+              Dealer Score
+            </p>
+            <p>
+
+            </p>
+          </div>
+
+          <div id="player-score" class="score">
+            <p>
+              Player Score
+            </p>
+            <p>
+
+            </p>
+          </div>
+        </div>
     <% } else { %>
-
+    <div>
+      <form action="/start-game" method="post">
+        <input type="button">
+      </form>
+    </div>
     <% } %>
   </div>
-
-
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="blackjack.js"></script>

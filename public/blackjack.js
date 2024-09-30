@@ -148,9 +148,7 @@ $(document).ready(function(){
     playerScore = calculateScore(playerHand);
     checkGameOver();
   });
-});
 
-$(document).ready(function(){
   $(".stand").click(function(){
     dealerTurn();
   });
